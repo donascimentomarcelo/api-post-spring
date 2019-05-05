@@ -2,21 +2,22 @@ package br.com.wikicode.domain;
 
 import java.io.Serializable;
 
-/**
- * @Author Marcelo Nascimento
- * @Date 4 de mai de 2019
- * @Project WikiCode
- * @Package br.com.wikicode.domain
- * @Desc 
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String name;
 	
-	public Category(String id, String name) {
+	public Category(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,10 +26,10 @@ public class Category implements Serializable {
 	public Category() {
 		super();
 	}
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
