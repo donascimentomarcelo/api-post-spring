@@ -7,5 +7,6 @@ import br.com.wikicode.domain.Category;
 public interface CategoryService {
 
 	List<Category> all();
+	Category save(Category category);
 	
 }
