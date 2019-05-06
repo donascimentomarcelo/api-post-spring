@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,12 @@ public class CategoryResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Category> find(@PathVariable Integer id) {
+		Category category = categoryService.find(id);
+		return ResponseEntity.ok(category);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Void> create(@RequestBody Category category) {
 		category = categoryService.save(category);
@@ -40,9 +47,15 @@ public class CategoryResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Void> update(@RequestBody Category category, @PathVariable Integer id) {
 		categoryService.update(category, id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		categoryService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 }
