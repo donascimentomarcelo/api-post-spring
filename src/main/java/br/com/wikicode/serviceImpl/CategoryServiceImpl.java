@@ -25,4 +25,15 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryRepository.save(category);
 	}
 
+	@Override
+	public void update(Category category, Integer id) {
+		find(id);
+		category.setId(id);
+		categoryRepository.save(category);
+	}
+	
+	public Category find(Integer id) {
+		return categoryRepository.findOne(id);
+	}
+
 }

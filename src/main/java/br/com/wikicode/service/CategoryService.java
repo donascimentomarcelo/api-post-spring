@@ -8,5 +8,6 @@ public interface CategoryService {
 
 	List<Category> all();
 	Category save(Category category);
+	void update(Category category, Integer id);
 	
 }
