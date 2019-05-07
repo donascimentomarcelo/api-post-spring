@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.wikicode.domain.Category;
+import br.com.wikicode.exception.ObjectNotFoundException;
 import br.com.wikicode.reposiroty.CategoryRepository;
 import br.com.wikicode.service.CategoryService;
 
@@ -34,7 +35,11 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public Category find(Integer id) {
-		return categoryRepository.findOne(id);
+		Category category = categoryRepository.findOne(id);
+		if (category == null) {
+			throw new ObjectNotFoundException("Categoria não encontrada.");
+		}
+		return category;
 	}
 
 	@Override
