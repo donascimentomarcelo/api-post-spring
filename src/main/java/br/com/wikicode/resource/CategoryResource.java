@@ -19,7 +19,7 @@ import br.com.wikicode.service.BaseService;
 import br.com.wikicode.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/categories")
 public class CategoryResource {
 	
 	@Autowired
