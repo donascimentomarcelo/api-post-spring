@@ -43,7 +43,7 @@ public class CategoryResource {
 	@PostMapping
 	public ResponseEntity<Void> create(@RequestBody Category category) {
 		category = categoryService.save(category);
-		URI uri  = baseService.returnUri(category);
+		URI uri  = baseService.returnUri(category.getId());
 		return ResponseEntity.created(uri).build();
 	}
 	
