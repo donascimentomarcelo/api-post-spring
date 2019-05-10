@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wikicode.domain.Subcategory;
+import br.com.wikicode.dto.SubcategoryDTO;
 import br.com.wikicode.service.BaseService;
 import br.com.wikicode.service.SubcategoryService;
 
@@ -32,7 +33,8 @@ public class SubcategoryResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> create(@RequestBody Subcategory subcategory) {
+	public ResponseEntity<Void> create(@RequestBody SubcategoryDTO subcategoryDTO) {
+		Subcategory subcategory = subcategoryService.associateWithCategory(subcategoryDTO);
 		subcategory = subcategoryService.create(subcategory);
 		URI uri = baseService.returnUri(subcategory.getId());
 		return ResponseEntity.created(uri).build();
