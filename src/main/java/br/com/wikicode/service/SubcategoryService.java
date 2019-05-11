@@ -13,5 +13,6 @@ public interface SubcategoryService {
 	void update(Subcategory subcategory, Integer id);
 	Subcategory find(Integer id);
 	void delete(Subcategory subcategory);
+	List<Subcategory> subcategoriesWhereHasCategoryId(Integer id);
 
 }

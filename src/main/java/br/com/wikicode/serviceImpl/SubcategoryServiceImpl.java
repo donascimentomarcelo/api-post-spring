@@ -61,4 +61,9 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 		subcategoryRepository.delete(subcategory);
 	}
 
+	@Override
+	public List<Subcategory> subcategoriesWhereHasCategoryId(Integer id) {
+		return subcategoryRepository.subcategoriesWhereHasCategoryId(id);
+	}
+
 }

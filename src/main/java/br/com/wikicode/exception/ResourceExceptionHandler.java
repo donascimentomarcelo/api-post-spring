@@ -21,4 +21,10 @@ public class ResourceExceptionHandler {
 		StandardError error = new StandardError(HttpStatus.UNPROCESSABLE_ENTITY.value(), exception.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
 	}
+	
+	@ExceptionHandler(IntegrityViolationException.class)
+	public ResponseEntity<StandardError> integrityViolationException(IntegrityViolationException exception, HttpServletRequest request) {
+		StandardError error = new StandardError(HttpStatus.CONFLICT.value(), exception.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+	}
 }
