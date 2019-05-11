@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.dto.SubcategoryDTO;
+import br.com.wikicode.exception.ObjectNotFoundException;
 import br.com.wikicode.reposiroty.SubcategoryRepository;
 import br.com.wikicode.service.CategoryService;
 import br.com.wikicode.service.SubcategoryService;
@@ -36,6 +37,28 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 		Category category = categoryService.find(subcategoryDTO.getCategoryId());
 		Subcategory subcategory = new Subcategory(subcategoryDTO.getName(), category);
 		return subcategory;
+	}
+
+	@Override
+	public void update(Subcategory subcategory, Integer id) {
+		subcategory.setId(id);
+		subcategoryRepository.save(subcategory);
+	}
+
+	@Override
+	public Subcategory find(Integer id) {
+		Subcategory subcategory = subcategoryRepository.findOne(id);
+		
+		if (subcategory == null) {
+			throw new ObjectNotFoundException("Subcategoria não encontrada.");
+		}
+		
+		return subcategory;
+	}
+
+	@Override
+	public void delete(Subcategory subcategory) {
+		subcategoryRepository.delete(subcategory);
 	}
 
 }

@@ -10,5 +10,8 @@ public interface SubcategoryService {
 	List<Subcategory> all();
 	Subcategory create(Subcategory subcategory);
 	Subcategory associateWithCategory(SubcategoryDTO subcategoryDTO);
+	void update(Subcategory subcategory, Integer id);
+	Subcategory find(Integer id);
+	void delete(Subcategory subcategory);
 
 }
