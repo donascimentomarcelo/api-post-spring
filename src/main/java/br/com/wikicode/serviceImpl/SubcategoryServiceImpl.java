@@ -3,6 +3,9 @@ package br.com.wikicode.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.wikicode.domain.Category;
@@ -64,6 +67,12 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	@Override
 	public List<Subcategory> subcategoriesWhereHasCategoryId(Integer id) {
 		return subcategoryRepository.subcategoriesWhereHasCategoryId(id);
+	}
+
+	@Override
+	public Page<Subcategory> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		return subcategoryRepository.findAll(pageRequest);
 	}
 
 }
