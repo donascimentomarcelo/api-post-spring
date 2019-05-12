@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.dto.SubcategoryDTO;
 import br.com.wikicode.service.BaseService;
@@ -70,7 +69,7 @@ public class SubcategoryResource {
 	public ResponseEntity<Page<Subcategory>> paginate(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy, 
+			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Subcategory> subcategories = subcategoryService.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(subcategories);
