@@ -1,10 +1,12 @@
 package br.com.wikicode.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class User extends ObjectBase {
 
+	@Column(unique=true)
 	private String username;
 	private String password;
 	
