@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
+import br.com.wikicode.domain.enums.Profile;
 
 @Entity
 public class Client extends ObjectBase {
@@ -62,8 +65,15 @@ public class Client extends ObjectBase {
 		this.phones = phones;
 	}
 
-	public Set<Integer> getProfiles() {
-		return profiles;
+	public Set<Profile> getProfiles() {
+		return profiles
+				.stream()
+				.map(profile -> Profile.toEnum(profile))
+				.collect(Collectors.toSet());
+	}
+	
+	public void addProfile(Profile profile) {
+		this.profiles.add(profile.getCode());
 	}
 
 	public void setProfiles(Set<Integer> profiles) {
