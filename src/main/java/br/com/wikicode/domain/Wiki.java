@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Wiki extends ObjectBase {
@@ -13,6 +17,11 @@ public class Wiki extends ObjectBase {
 	
 	@OneToMany(mappedBy="wiki")
 	private List<Text> texts = new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name="client_id")
+	@JsonIgnore
+	private Client client;
 	
 	public Wiki() {
 		
