@@ -10,7 +10,7 @@ import br.com.wikicode.service.BaseService;
 @Service
 public class BaseServiceImpl implements BaseService {
 
-	public URI returnUri(Integer id) {
+	public URI returnUri(String id) {
 		return ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(id).toUri();
 	}

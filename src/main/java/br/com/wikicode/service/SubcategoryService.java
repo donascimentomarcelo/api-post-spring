@@ -12,10 +12,10 @@ public interface SubcategoryService {
 	List<Subcategory> all();
 	Subcategory create(Subcategory subcategory);
 	Subcategory associateWithCategory(SubcategoryDTO subcategoryDTO);
-	void update(Subcategory subcategory, Integer id);
-	Subcategory find(Integer id);
+	void update(Subcategory subcategory, String id);
+	Subcategory find(String id);
 	void delete(Subcategory subcategory);
-	List<Subcategory> subcategoriesWhereHasCategoryId(Integer id);
+	List<Subcategory> subcategoriesWhereHasCategoryId(String id);
 	Page<Subcategory> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 
 }

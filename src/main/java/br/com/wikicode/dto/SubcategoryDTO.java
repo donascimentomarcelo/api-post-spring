@@ -3,7 +3,7 @@ package br.com.wikicode.dto;
 public class SubcategoryDTO {
 	
 	private String name;
-	private Integer categoryId;
+	private String categoryId;
 	
 	public SubcategoryDTO() {
 		super();
@@ -15,10 +15,10 @@ public class SubcategoryDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getCategoryId() {
+	public String getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(Integer categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 }

@@ -43,13 +43,13 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	}
 
 	@Override
-	public void update(Subcategory subcategory, Integer id) {
+	public void update(Subcategory subcategory, String id) {
 		subcategory.setId(id);
 		subcategoryRepository.save(subcategory);
 	}
 
 	@Override
-	public Subcategory find(Integer id) {
+	public Subcategory find(String id) {
 		Subcategory subcategory = subcategoryRepository.findOne(id);
 		
 		if (subcategory == null) {
@@ -65,7 +65,7 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	}
 
 	@Override
-	public List<Subcategory> subcategoriesWhereHasCategoryId(Integer id) {
+	public List<Subcategory> subcategoriesWhereHasCategoryId(String id) {
 		return subcategoryRepository.subcategoriesWhereHasCategoryId(id);
 	}
 

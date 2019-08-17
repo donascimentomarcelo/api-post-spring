@@ -45,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void update(Category category, Integer id) {
+	public void update(Category category, String id) {
 		checkIfCategoryExists(category);
 		find(id);
 		category.setId(id);
@@ -53,7 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 	
 	@Override
-	public Category find(Integer id) {
+	public Category find(String id) {
 		Category category = categoryRepository.findOne(id);
 		if (category == null) {
 			throw new ObjectNotFoundException("Categoria não encontrada.");
@@ -62,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		
 		List<Subcategory> subcategories = subcategoryService.subcategoriesWhereHasCategoryId(id);
 		if (subcategories.size() != 0) {

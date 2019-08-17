@@ -46,21 +46,21 @@ public class SubcategoryResource {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@RequestBody SubcategoryDTO subcategoryDTO, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@RequestBody SubcategoryDTO subcategoryDTO, @PathVariable String id) {
 		Subcategory subcategory = subcategoryService.associateWithCategory(subcategoryDTO);
 		subcategoryService.update(subcategory, id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable String id) {
 		Subcategory subcategory = subcategoryService.find(id);
 		subcategoryService.delete(subcategory);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Subcategory> find(@PathVariable Integer id) {
+	public ResponseEntity<Subcategory> find(@PathVariable String id) {
 		Subcategory subcategory = subcategoryService.find(id);
 		return ResponseEntity.ok(subcategory);
 	}

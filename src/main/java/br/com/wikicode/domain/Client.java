@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import br.com.wikicode.domain.enums.Profile;
@@ -26,7 +27,7 @@ public class Client extends ObjectBase {
 	@CollectionTable(name="PHONES")
 	private Set<String> phones = new HashSet<>();
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="PROFILES")
 	private Set<Integer> profiles = new HashSet<>();
 	

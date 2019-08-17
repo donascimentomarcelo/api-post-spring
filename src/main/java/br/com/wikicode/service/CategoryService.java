@@ -10,9 +10,9 @@ public interface CategoryService {
 
 	List<Category> all();
 	Category save(Category category);
-	void update(Category category, Integer id);
-	Category find(Integer id);
-	void delete(Integer id);
+	void update(Category category, String id);
+	Category find(String id);
+	void delete(String id);
 	Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 	
 }

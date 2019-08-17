@@ -37,7 +37,7 @@ public class CategoryResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Category> find(@PathVariable Integer id) {
+	public ResponseEntity<Category> find(@PathVariable String id) {
 		Category category = categoryService.find(id);
 		return ResponseEntity.ok(category);
 	}
@@ -50,13 +50,13 @@ public class CategoryResource {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@RequestBody Category category, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@RequestBody Category category, @PathVariable String id) {
 		categoryService.update(category, id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable String id) {
 		categoryService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
