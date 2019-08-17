@@ -66,7 +66,8 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 
 	@Override
 	public List<Subcategory> subcategoriesWhereHasCategoryId(String id) {
-		return subcategoryRepository.subcategoriesWhereHasCategoryId(id);
+//		return subcategoryRepository.subcategoriesWhereHasCategoryId(id);
+		return null;
 	}
 
 	@Override

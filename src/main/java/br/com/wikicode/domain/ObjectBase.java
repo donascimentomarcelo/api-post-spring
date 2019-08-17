@@ -1,15 +1,10 @@
 package br.com.wikicode.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import org.springframework.data.annotation.Id;
 
-@MappedSuperclass
 public abstract class ObjectBase {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	protected String id;
 
 	public String getId() {

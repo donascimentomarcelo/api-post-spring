@@ -3,23 +3,20 @@ package br.com.wikicode.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
+@Document(collection="wiki")
 public class Wiki extends ObjectBase {
 	
 	private String title;
 	
-	@OneToMany(mappedBy="wiki")
+	// @OneToMany(mappedBy="wiki")
 	private List<Text> texts = new ArrayList<>();
 	
-	@ManyToOne
-	@JoinColumn(name="client_id")
+	// @ManyToOne
+	// @JoinColumn(name="client_id")
 	@JsonIgnore
 	private Client client;
 	

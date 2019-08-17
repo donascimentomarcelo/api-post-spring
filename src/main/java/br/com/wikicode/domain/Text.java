@@ -1,19 +1,17 @@
 package br.com.wikicode.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
+@Document(collection="text")
 public class Text extends ObjectBase {
 
 	private String message;
 	
-	@ManyToOne
+	// @ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="wiki_id")
+	// @JoinColumn(name="wiki_id")
 	private Wiki wiki;
 
 	public Text() {

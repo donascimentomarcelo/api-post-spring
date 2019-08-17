@@ -1,14 +1,12 @@
 package br.com.wikicode.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.wikicode.domain.enums.State;
 
-@Entity
+@Document(collection="address")
 public class Address extends ObjectBase {
 	
 	private String zipcode;
@@ -16,8 +14,8 @@ public class Address extends ObjectBase {
 	private String city;
 	private Integer state;
 	
-	@ManyToOne
-	@JoinColumn(name="client_id")
+	// @ManyToOne
+	// @JoinColumn(name="client_id")
 	@JsonIgnore
 	private Client client;
 	

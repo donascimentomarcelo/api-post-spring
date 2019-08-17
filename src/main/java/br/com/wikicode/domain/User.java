@@ -1,12 +1,11 @@
 package br.com.wikicode.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection="user")
 public class User extends ObjectBase {
 
-	@Column(unique=true)
+	// @Column(unique=true)
 	private String username;
 	private String password;
 	

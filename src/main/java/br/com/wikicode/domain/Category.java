@@ -4,16 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection="category")
 public class Category extends ObjectBase implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	@OneToMany(mappedBy="category")
+	// @OneToMany(mappedBy="category")
 	private List<Subcategory> subcategories = new ArrayList<>();
 	
 	public Category(String name) {
