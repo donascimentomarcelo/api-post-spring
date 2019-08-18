@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.wikicode.domain.enums.Profile;
@@ -17,17 +18,21 @@ public class Client extends ObjectBase {
 	private String email;
 	
 	// @OneToMany(mappedBy="client")
+	@DBRef(lazy=true)
 	private List<Address> address = new ArrayList<>();
 	
 	// @ElementCollection
 	// @CollectionTable(name="PHONES")
+	@DBRef(lazy=true)
 	private Set<String> phones = new HashSet<>();
 	
 	// @ElementCollection(fetch=FetchType.EAGER)
 	// @CollectionTable(name="PROFILES")
+	@DBRef(lazy=true)
 	private Set<Integer> profiles = new HashSet<>();
 	
 	// @OneToMany(mappedBy="client")
+	@DBRef(lazy=true)
 	private List<Wiki> wiki = new ArrayList<>();
 
 	public String getName() {

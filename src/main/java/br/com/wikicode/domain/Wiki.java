@@ -3,6 +3,7 @@ package br.com.wikicode.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,6 +14,7 @@ public class Wiki extends ObjectBase {
 	private String title;
 	
 	// @OneToMany(mappedBy="wiki")
+	@DBRef(lazy=true)
 	private List<Text> texts = new ArrayList<>();
 	
 	// @ManyToOne
