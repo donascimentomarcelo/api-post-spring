@@ -23,12 +23,11 @@ public class Address extends ObjectBase {
 		
 	}
 	
-	public Address(String zipcode, String address, String city, State state, Client client) {
+	public Address(String zipcode, String address, String city, State state) {
 		this.zipcode = zipcode;
 		this.address = address;
 		this.city = city;
 		this.state = state != null ? state.getCode() : null;
-		this.client = client;
 	}
 	
 	public String getZipcode() {

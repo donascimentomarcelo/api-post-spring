@@ -11,29 +11,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.wikicode.domain.enums.Profile;
 
-@Document(collection="clients")
+@Document(collection="client")
 public class Client extends ObjectBase {
 	
 	private String name;
 	private String email;
-	
-	// @OneToMany(mappedBy="client")
 	@DBRef(lazy=true)
 	private List<Address> address = new ArrayList<>();
-	
-	// @ElementCollection
-	// @CollectionTable(name="PHONES")
-	@DBRef(lazy=true)
 	private Set<String> phones = new HashSet<>();
-	
-	// @ElementCollection(fetch=FetchType.EAGER)
-	// @CollectionTable(name="PROFILES")
-	@DBRef(lazy=true)
 	private Set<Integer> profiles = new HashSet<>();
-	
-	// @OneToMany(mappedBy="client")
-	@DBRef(lazy=true)
 	private List<Wiki> wiki = new ArrayList<>();
+
+	public Client() {
+		super();
+	}
+
+	public Client(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
 
 	public String getName() {
 		return name;
@@ -89,4 +86,5 @@ public class Client extends ObjectBase {
 	public void setWiki(List<Wiki> wiki) {
 		this.wiki = wiki;
 	}
+	
 }

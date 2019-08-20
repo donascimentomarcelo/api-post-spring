@@ -1,5 +1,6 @@
 package br.com.wikicode.domain;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="user")
@@ -8,6 +9,8 @@ public class User extends ObjectBase {
 	// @Column(unique=true)
 	private String username;
 	private String password;
+	@DBRef
+	private Client client;
 	
 	public User(String username, String password) {
 		super();
@@ -30,5 +33,11 @@ public class User extends ObjectBase {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 }
