@@ -1,6 +1,8 @@
 package br.com.wikicode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,14 +13,18 @@ import br.com.wikicode.domain.Address;
 import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Client;
 import br.com.wikicode.domain.Subcategory;
+import br.com.wikicode.domain.Text;
 import br.com.wikicode.domain.User;
+import br.com.wikicode.domain.Wiki;
 import br.com.wikicode.domain.enums.Profile;
 import br.com.wikicode.domain.enums.State;
 import br.com.wikicode.reposiroty.AddressRepository;
 import br.com.wikicode.reposiroty.CategoryRepository;
 import br.com.wikicode.reposiroty.ClientRepository;
 import br.com.wikicode.reposiroty.SubcategoryRepository;
+import br.com.wikicode.reposiroty.TextRepository;
 import br.com.wikicode.reposiroty.UserRepository;
+import br.com.wikicode.reposiroty.WikiRepository;
 
 @SpringBootApplication
 public class WikiCodeApplication implements CommandLineRunner{
@@ -38,6 +44,12 @@ public class WikiCodeApplication implements CommandLineRunner{
 	@Autowired
 	private ClientRepository clientRepository;
 	
+	@Autowired
+	private WikiRepository wikiRepository;
+
+	@Autowired
+	private TextRepository textRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(WikiCodeApplication.class, args);
 	}
@@ -49,6 +61,7 @@ public class WikiCodeApplication implements CommandLineRunner{
 		userRepository.deleteAll();
 		clientRepository.deleteAll();
 		addressRepository.deleteAll();
+		wikiRepository.deleteAll();
 		
 		
 		Category c1 = new Category("Desenvolvimento Web");
@@ -83,6 +96,21 @@ public class WikiCodeApplication implements CommandLineRunner{
 		u1.setClient(cli1);
 		userRepository.save(u1);
 	
+		Text t1 = new Text("Text one");
+		Text t2 = new Text("Text two");
+		Text t3 = new Text("Text  three");
+		Text t4 = new Text("Text four");
+		
+		List<Text> textList = new ArrayList<>();
+		textList = Arrays.asList(t1, t2, t3, t4);
+		
+		textRepository.save(textList);
+
+		Wiki w1 = new Wiki("New Wiki");
+		w1.getTexts().addAll(textList);
+		
+		wikiRepository.save(w1);
+		
 	}
 
 }
