@@ -16,7 +16,6 @@ public class Wiki extends ObjectBase {
 	// @OneToMany(mappedBy="wiki")
 	@DBRef(lazy=true)
 	private List<Text> texts = new ArrayList<>();
-	
 	// @ManyToOne
 	// @JoinColumn(name="client_id")
 	@JsonIgnore
@@ -26,9 +25,8 @@ public class Wiki extends ObjectBase {
 		
 	}
 
-	public Wiki(String title, List<Text> texts) {
+	public Wiki(String title) {
 		this.title = title;
-		this.texts = texts;
 	}
 	
 	public String getTitle() {
@@ -43,4 +41,11 @@ public class Wiki extends ObjectBase {
 	public void setTexts(List<Text> texts) {
 		this.texts = texts;
 	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 }
