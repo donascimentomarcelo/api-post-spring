@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.wikicode.domain.Text;
 import br.com.wikicode.domain.Wiki;
 
 public class WikiDTO {

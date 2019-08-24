@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.wikicode.dto.WikiDTO;
+
 @Document(collection="wiki")
 public class Wiki extends ObjectBase {
 	
@@ -46,6 +48,12 @@ public class Wiki extends ObjectBase {
 	}
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public static Wiki fromWiki(WikiDTO wikiDto) {
+		Wiki wiki = new Wiki();
+		wiki.setTitle(wikiDto.getTitle());
+		return wiki;
 	}
 	
 }

@@ -1,9 +1,6 @@
 package br.com.wikicode.reposiroty;
 
-import java.util.List;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.wikicode.domain.Subcategory;
