@@ -1,12 +1,11 @@
 package br.com.wikicode.dto;
 
-import br.com.wikicode.domain.Client;
 import br.com.wikicode.domain.User;
 
 public class UserDTO {
 
 	private String username;
-	private Client client;
+	private ClientDTO client;
 	
 	public UserDTO() {
 		super();
@@ -15,7 +14,7 @@ public class UserDTO {
 	public UserDTO(User user) {
 		super();
 		this.username = user.getUsername();
-		this.client = user.getClient();
+		this.client = new ClientDTO(user.getClient());
 	}
 
 	public String getUsername() {
@@ -26,12 +25,12 @@ public class UserDTO {
 		this.username = username;
 	}
 
-	public Client getClient() {
+	public ClientDTO getClient() {
 		return client;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(ClientDTO client) {
 		this.client = client;
 	}
-	
+
 }
