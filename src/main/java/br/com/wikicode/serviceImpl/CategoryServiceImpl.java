@@ -63,13 +63,16 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void delete(String id) {
-		
+		//checkIfHasSubcategory(id);
+		Category category = find(id);
+		categoryRepository.delete(category);
+	}
+
+	private void checkIfHasSubcategory(String id) {
 		List<Subcategory> subcategories = subcategoryService.subcategoriesWhereHasCategoryId(id);
 		if (subcategories.size() != 0) {
 			throw new IntegrityViolationException("Essa categoria possui dependencias.");
 		}
-		Category category = find(id);
-		categoryRepository.delete(category);
 	}
 
 	@Override
