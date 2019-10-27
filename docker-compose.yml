@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mongo-db-host:
+    image: mongo:3.4
+    volumes:
+      - ./_data:/data/db
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
+  api:
+    image: wkimg:1.5
+    #build: .
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo-db-host:27017/wikicode
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
