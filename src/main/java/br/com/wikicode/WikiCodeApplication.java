@@ -64,10 +64,10 @@ public class WikiCodeApplication implements CommandLineRunner{
 		wikiRepository.deleteAll();
 		
 		
-		Category c1 = new Category("Desenvolvimento Web");
-		Category c2 = new Category("Desenvolvimento Mobile");
-		Category c3 = new Category("Desenvolvimento Desktop");
-		Category c4 = new Category("Banco de Dados");
+		Category c1 = new Category("Desenvolvimento Web", "Desc 123");
+		Category c2 = new Category("Desenvolvimento Mobile", "Desc 456");
+		Category c3 = new Category("Desenvolvimento Desktop", "Desc789");
+		Category c4 = new Category("Banco de Dados", "Desc 101");
 		categoryRepository.save(Arrays.asList(c1, c2, c3, c4));
 		
 		Subcategory s1 = new Subcategory("Java", c1);
