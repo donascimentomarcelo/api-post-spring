@@ -64,7 +64,7 @@ public class CategoryResource {
 	@GetMapping("/paginate")
 	public ResponseEntity<Page<Category>> paginate(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
-			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
+			@RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage, 
 			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Category> categories = categoryService.findPage(page, linesPerPage, orderBy, direction);
