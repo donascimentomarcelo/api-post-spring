@@ -68,7 +68,20 @@ public class WikiCodeApplication implements CommandLineRunner{
 		Category c2 = new Category("Desenvolvimento Mobile", "Desc 456");
 		Category c3 = new Category("Desenvolvimento Desktop", "Desc789");
 		Category c4 = new Category("Banco de Dados", "Desc 101");
+		
 		categoryRepository.save(Arrays.asList(c1, c2, c3, c4));
+		for (int i = 0; i < 50; i++) {
+			Category c5 = new Category(
+					String.format("Desenvolvimento Desktop %s", i), 
+					String.format("Desc %s", i)
+			);
+			categoryRepository.save(c5);
+			
+			for (int j = 0; j < 2; j++) {
+				Subcategory s4 = new Subcategory(String.format("Subcategory %s", j), c1);
+				subcategoryRepository.save(s4);
+			}			
+		}
 		
 		Subcategory s1 = new Subcategory("Java", c1);
 		Subcategory s2 = new Subcategory("PHP", c1);
