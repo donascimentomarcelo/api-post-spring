@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Document(collection="category")
 public class Category extends ObjectBase implements Serializable {
@@ -14,8 +15,8 @@ public class Category extends ObjectBase implements Serializable {
 
 	private String name;
 	private String description;
-	// @OneToMany(mappedBy="category")
-	@DBRef(lazy=true)
+
+	@JsonIgnore
 	private List<Subcategory> subcategories = new ArrayList<>();
 	
 	public Category(String name, String description) {

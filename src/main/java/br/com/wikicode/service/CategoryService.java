@@ -13,5 +13,5 @@ public interface CategoryService {
 	void update(Category category, String id);
 	Category find(String id);
 	void delete(String id);
-	Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);	
+	Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 }

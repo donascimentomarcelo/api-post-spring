@@ -10,5 +10,4 @@ import br.com.wikicode.domain.Category;
 public interface CategoryRepository extends MongoRepository<Category, String>{
 	@Transactional(readOnly=true)
 	Category findByName(String name);
-
 }

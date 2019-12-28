@@ -2,9 +2,8 @@ package br.com.wikicode.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Document(collection="subcategory")
 public class Subcategory extends ObjectBase implements Serializable {
@@ -13,8 +12,9 @@ public class Subcategory extends ObjectBase implements Serializable {
 
 	private String name;
 	// @ManyToOne
-	@JsonIgnore
+	
 	// @JoinColumn(name="category_id")
+	@DBRef(lazy=true)
 	private Category category;
 	
 	public Subcategory(String name, Category category) {

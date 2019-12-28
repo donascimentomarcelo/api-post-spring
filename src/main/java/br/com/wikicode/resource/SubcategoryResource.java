@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.dto.SubcategoryDTO;
 import br.com.wikicode.service.BaseService;
+import br.com.wikicode.service.CategoryService;
 import br.com.wikicode.service.SubcategoryService;
 
 @RestController
@@ -27,6 +29,9 @@ public class SubcategoryResource {
 	
 	@Autowired
 	private SubcategoryService subcategoryService;
+
+	@Autowired
+	private CategoryService categoryService;
 	
 	@Autowired
 	private BaseService baseService;
@@ -60,9 +65,10 @@ public class SubcategoryResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Subcategory> find(@PathVariable String id) {
+	public ResponseEntity<SubcategoryDTO> find(@PathVariable String id) {
 		Subcategory subcategory = subcategoryService.find(id);
-		return ResponseEntity.ok(subcategory);
+		SubcategoryDTO dto = SubcategoryDTO.fromDto(subcategory);
+		return ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping("/paginate")
