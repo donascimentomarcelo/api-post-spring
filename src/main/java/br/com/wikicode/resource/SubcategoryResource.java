@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.dto.SubcategoryDTO;
 import br.com.wikicode.service.BaseService;
-import br.com.wikicode.service.CategoryService;
 import br.com.wikicode.service.SubcategoryService;
 
 @RestController
