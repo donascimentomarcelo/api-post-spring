@@ -11,9 +11,7 @@ public class Subcategory extends ObjectBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	// @ManyToOne
-	
-	// @JoinColumn(name="category_id")
+
 	@DBRef(lazy=true)
 	private Category category;
 	

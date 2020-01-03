@@ -31,9 +31,6 @@ public class SubcategoryResource {
 	private SubcategoryService subcategoryService;
 
 	@Autowired
-	private CategoryService categoryService;
-	
-	@Autowired
 	private BaseService baseService;
 
 	@GetMapping

@@ -20,7 +20,7 @@ public class Client extends ObjectBase {
 	private List<Address> address = new ArrayList<>();
 	private Set<String> phones = new HashSet<>();
 	private Set<Integer> profiles = new HashSet<>();
-	private List<Wiki> wiki = new ArrayList<>();
+	//private List<Post> wiki = new ArrayList<>();
 
 	public Client() {
 		super();
@@ -77,14 +77,5 @@ public class Client extends ObjectBase {
 
 	public void setProfiles(Set<Integer> profiles) {
 		this.profiles = profiles;
-	}
-
-	public List<Wiki> getWiki() {
-		return wiki;
-	}
-
-	public void setWiki(List<Wiki> wiki) {
-		this.wiki = wiki;
-	}
-	
+	}	
 }
