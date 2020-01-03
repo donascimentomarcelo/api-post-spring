@@ -3,6 +3,9 @@ package br.com.wikicode.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 
 import br.com.wikicode.domain.Post;
 import br.com.wikicode.reposiroty.PostRepository;
@@ -40,6 +43,12 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void delete(String id) {
 		postRepository.delete(id);
+	}
+
+	@Override
+	public Page<Post> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		return postRepository.findAll(pageRequest);
 	}
 
 }
