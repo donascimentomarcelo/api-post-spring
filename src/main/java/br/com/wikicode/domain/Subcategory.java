@@ -21,13 +21,9 @@ public class Subcategory extends ObjectBase implements Serializable {
 		this.category = category;
 	}
 	
-	
-
 	public Subcategory(String id) {
 		super();
 	}
-
-
 
 	public Subcategory() {
 		super();

@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
 
 import br.com.wikicode.domain.Post;
 import br.com.wikicode.reposiroty.PostRepository;
 import br.com.wikicode.service.PostService;
 
+@Service
 public class PostServiceImpl implements PostService {
 	
 	@Autowired

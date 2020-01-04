@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.wikicode.domain.Address;
 import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Client;
+import br.com.wikicode.domain.Post;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.domain.User;
 import br.com.wikicode.domain.enums.Profile;
@@ -17,6 +18,7 @@ import br.com.wikicode.domain.enums.State;
 import br.com.wikicode.reposiroty.AddressRepository;
 import br.com.wikicode.reposiroty.CategoryRepository;
 import br.com.wikicode.reposiroty.ClientRepository;
+import br.com.wikicode.reposiroty.PostRepository;
 import br.com.wikicode.reposiroty.SubcategoryRepository;
 import br.com.wikicode.reposiroty.UserRepository;
 
@@ -37,6 +39,9 @@ public class WikiCodeApplication implements CommandLineRunner{
 
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	@Autowired
+	private PostRepository postRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(WikiCodeApplication.class, args);
@@ -77,6 +82,11 @@ public class WikiCodeApplication implements CommandLineRunner{
 		
 		c1.getSubcategories().addAll(Arrays.asList(s1, s2, s3));
 		categoryRepository.save(c1);
+		
+		Post post1 = new Post(null, "Meu post", "kdmkofn", s1);
+		Post post2 = new Post(null, "Meu post", "kdmkofn", s2);
+		Post post3 = new Post(null, "Meu post", "kdmkofn", s3);
+		postRepository.save(Arrays.asList(post1, post2, post3));
 		
 		User u1 = new User("k.crane", "1234");
 		userRepository.save(u1);
