@@ -51,43 +51,32 @@ public class WikiCodeApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		categoryRepository.deleteAll();
 		subcategoryRepository.deleteAll();
+		postRepository.deleteAll();
 		userRepository.deleteAll();
 		clientRepository.deleteAll();
 		addressRepository.deleteAll();
 		
-		
-		Category c1 = new Category("Desenvolvimento Web", "Desc 123");
-		Category c2 = new Category("Desenvolvimento Mobile", "Desc 456");
-		Category c3 = new Category("Desenvolvimento Desktop", "Desc789");
-		Category c4 = new Category("Banco de Dados", "Desc 101");
-		
-		categoryRepository.save(Arrays.asList(c1, c2, c3, c4));
 		for (int i = 0; i < 50; i++) {
 			Category c5 = new Category(
-					String.format("Desenvolvimento Desktop %s", i), 
+					String.format("Categoria %s", i), 
 					String.format("Desc %s", i)
 			);
 			categoryRepository.save(c5);
 			
 			for (int j = 0; j < 2; j++) {
-				Subcategory s4 = new Subcategory(String.format("Subcategory %s", j), c1);
+				Subcategory s4 = new Subcategory(String.format("Subcategoria %s", j), c5);
 				subcategoryRepository.save(s4);
+				
+				for(int x = 0; x < 3; x++) {
+					Post p1 = new Post(
+							null, 
+							String.format("Post %s", x), 
+							String.format("Descrição %s", x), s4);
+					postRepository.save(p1);
+				}
 			}			
 		}
-		
-		Subcategory s1 = new Subcategory("Java", c1);
-		Subcategory s2 = new Subcategory("PHP", c1);
-		Subcategory s3 = new Subcategory("NodeJS", c1);
-		subcategoryRepository.save(Arrays.asList(s1, s2, s3));
-		
-		c1.getSubcategories().addAll(Arrays.asList(s1, s2, s3));
-		categoryRepository.save(c1);
-		
-		Post post1 = new Post(null, "Meu post", "kdmkofn", s1);
-		Post post2 = new Post(null, "Meu post", "kdmkofn", s2);
-		Post post3 = new Post(null, "Meu post", "kdmkofn", s3);
-		postRepository.save(Arrays.asList(post1, post2, post3));
-		
+				
 		User u1 = new User("k.crane", "1234");
 		userRepository.save(u1);
 		

@@ -23,7 +23,7 @@ import br.com.wikicode.dto.PostDTO;
 import br.com.wikicode.service.PostService;
 
 @RestController
-@RequestMapping("/v1/posts")
+@RequestMapping("/api/posts")
 public class PostResource {
 
 	@Autowired
