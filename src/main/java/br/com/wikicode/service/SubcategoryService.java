@@ -17,5 +17,6 @@ public interface SubcategoryService {
 	void delete(Subcategory subcategory);
 	List<Subcategory> subcategoriesWhereHasCategoryId(String id);
 	Page<Subcategory> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
+	List<Subcategory> findByCategory(String id);
 
 }

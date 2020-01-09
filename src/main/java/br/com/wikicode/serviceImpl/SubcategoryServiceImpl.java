@@ -76,4 +76,9 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 		return subcategoryRepository.findAll(pageRequest);
 	}
 
+	@Override
+	public List<Subcategory> findByCategory(String id) {
+		return subcategoryRepository.findByCategory(id);
+	}
+
 }

@@ -66,6 +66,12 @@ public class SubcategoryResource {
 		return ResponseEntity.ok(dto);
 	}
 	
+	@GetMapping("/findByCategory/{id}")
+	public ResponseEntity<List<Subcategory>> findByCategory(@PathVariable String id) {
+		List<Subcategory> list = subcategoryService.findByCategory(id);
+		return ResponseEntity.ok(list);
+	}
+	
 	@GetMapping("/paginate")
 	public ResponseEntity<Page<Subcategory>> paginate(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
