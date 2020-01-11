@@ -51,9 +51,10 @@ public class PostResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Post> findOne(@PathVariable String id) {
+	public ResponseEntity<PostDTO> findOne(@PathVariable String id) {
 		Post post = postService.findOne(id);
-		return ResponseEntity.ok().body(post);
+		PostDTO dto = PostDTO.fromDTO(post);
+		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PutMapping("/{id}")
