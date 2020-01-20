@@ -10,6 +10,7 @@ public class Subcategory extends ObjectBase implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	private String id;
 	private String name;
 
 	@DBRef(lazy=true)
@@ -20,14 +21,23 @@ public class Subcategory extends ObjectBase implements Serializable {
 		this.name = name;
 		this.category = category;
 	}
-	
+
 	public Subcategory(String id) {
-		super();
+		this.id = id;
 	}
 
 	public Subcategory() {
 		super();
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

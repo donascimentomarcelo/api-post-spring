@@ -58,7 +58,7 @@ public class PostResource {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable String id, PostDTO dto) {
+	public ResponseEntity<?> update(@PathVariable String id, @RequestBody PostDTO dto) {
 		Subcategory subcategory = new Subcategory(dto.getSubcategoryId());
 		Post post = new Post(null, dto.getTitle(), dto.getDescription(), subcategory);
 		postService.update(id, post);

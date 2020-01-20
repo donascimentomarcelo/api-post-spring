@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
 		Post object = findOne(id);
 		object.setDescription(post.getDescription());
 		object.setTitle(post.getTitle());
-		object.setSubcategory(post.getSubcategory());
+		// object.setSubcategory(post.getSubcategory());
 		save(object);
 	}
 
