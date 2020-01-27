@@ -20,4 +20,6 @@ public interface PostService {
 
 	Page<Post> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 
+	List<Post> findByTitle(String name);
+
 }

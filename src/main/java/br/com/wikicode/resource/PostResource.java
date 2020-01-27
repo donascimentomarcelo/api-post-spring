@@ -80,4 +80,10 @@ public class PostResource {
 		Page<Post> list = postService.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@GetMapping("/fingByTitle")
+	public ResponseEntity<List<Post>> findByTitle(@RequestParam("title") String title) {
+		List<Post> list = postService.findByTitle(title);
+		return ResponseEntity.ok(list);
+	}
 }
