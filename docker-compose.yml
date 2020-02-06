@@ -1,18 +1,24 @@
-version: '3'
+version: "2.0"
 services:
-  mongo-db-host:
-    image: mongo:3.4
-    volumes:
-      - ./_data:/data/db
-    ports:
-      - "27017:27017"
-    command: mongod --smallfiles
-  api:
-    image: wkimg:1.5
-    #build: .
+  springboot:
+    image: wk:1.0
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo-db-host:27017/wikicode
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/wikicode
     ports:
       - 8080:8080
     depends_on:
-      - mongo-db-host
+      - mongo
+    links:
+      - mongo
+    networks:
+      - spring-mongo-net
+  mongo:
+    image: mongo:3.4
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    networks:
+      - spring-mongo-net
+networks:
+  spring-mongo-net:
+    driver: bridge
