@@ -81,4 +81,12 @@ public class SubcategoryResource {
 		Page<Subcategory> subcategories = subcategoryService.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(subcategories);
 	}
+	
+	@GetMapping("/findByNameAndCategory")
+	public ResponseEntity<List<Subcategory>> findByNameAndCategory(
+			@RequestParam(value = "name") String name,
+			@RequestParam(value = "categoryId") String categoryId) {
+		List<Subcategory> list = subcategoryService.findByNameAndCategory(name, categoryId);
+		return ResponseEntity.ok().body(list);
+	}
 }

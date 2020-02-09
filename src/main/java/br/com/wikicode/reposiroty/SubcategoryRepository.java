@@ -6,9 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.wikicode.domain.Subcategory;
+import br.com.wikicode.reposiroty.query.SubcategoryRepositoryQuery;
 
 @Repository
-public interface SubcategoryRepository extends MongoRepository<Subcategory, String>{
+public interface SubcategoryRepository extends MongoRepository<Subcategory, String>, SubcategoryRepositoryQuery {
 
 	List<Subcategory> findByCategory(String id);
 

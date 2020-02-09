@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import br.com.wikicode.domain.Category;
@@ -24,6 +25,9 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+    @Autowired
+    MongoTemplate mongoTemplate;
 	
 	@Override
 	public List<Subcategory> all() {
@@ -79,6 +83,11 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	@Override
 	public List<Subcategory> findByCategory(String id) {
 		return subcategoryRepository.findByCategory(id);
+	}
+
+	@Override
+	public List<Subcategory> findByNameAndCategory(String name, String categoryId) {
+		return subcategoryRepository.filter(name, categoryId);
 	}
 
 }

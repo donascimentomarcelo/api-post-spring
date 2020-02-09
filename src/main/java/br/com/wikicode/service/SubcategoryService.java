@@ -18,5 +18,6 @@ public interface SubcategoryService {
 	List<Subcategory> subcategoriesWhereHasCategoryId(String id);
 	Page<Subcategory> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 	List<Subcategory> findByCategory(String id);
+	List<Subcategory> findByNameAndCategory(String name, String categoryId);
 
 }
