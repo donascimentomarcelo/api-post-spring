@@ -1,7 +1,9 @@
 version: "2.0"
 services:
   springboot:
-    image: wk:1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/wikicode
     ports:
