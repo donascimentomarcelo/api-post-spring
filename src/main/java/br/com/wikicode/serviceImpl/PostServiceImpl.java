@@ -54,8 +54,10 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> findByTitle(String title) {
-		return postRepository.findByTitleIgnoreCase(title);
+	public List<Post> findByTitle(String categoryId, String subcategoryId, String title) {
+		return postRepository.findByTitle(categoryId, subcategoryId, title);
 	}
+
+	
 
 }

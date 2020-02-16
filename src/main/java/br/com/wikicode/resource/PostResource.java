@@ -82,8 +82,11 @@ public class PostResource {
 	}
 	
 	@GetMapping("/fingByTitle")
-	public ResponseEntity<List<Post>> findByTitle(@RequestParam("title") String title) {
-		List<Post> list = postService.findByTitle(title);
+	public ResponseEntity<List<Post>> findByTitle(
+			@RequestParam("categoryId") String categoryId,
+			@RequestParam("subcategoryId") String subcategoryId,
+			@RequestParam("title") String title) {
+		List<Post> list = postService.findByTitle(categoryId, subcategoryId, title);
 		return ResponseEntity.ok(list);
 	}
 }
