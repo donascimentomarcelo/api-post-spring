@@ -1,3 +1,11 @@
 spring.data.mongodb:
   database: wikicode
   uri: mongodb://localhost:27017
+
+jwt:
+  secret: jwt__
+  expiration: 60000
+  
+integration:
+  userserviceUrl: 
+    login: http://localhost:8081/users/findByUsername

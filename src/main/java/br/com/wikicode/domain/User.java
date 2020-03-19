@@ -1,15 +1,16 @@
 package br.com.wikicode.domain;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.HashSet;
+import java.util.Set;
 
-@Document(collection="user")
+//@Document(collection="user")
 public class User extends ObjectBase {
 
 	// @Column(unique=true)
 	private String username;
 	private String password;
-	@DBRef
+	private Set<String> profiles = new HashSet<>();
+//	@DBRef
 	private Client client;
 	
 	public User(String username, String password) {
@@ -39,5 +40,13 @@ public class User extends ObjectBase {
 	}
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public Set<String> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(Set<String> profiles) {
+		this.profiles = profiles;
 	}
 }
