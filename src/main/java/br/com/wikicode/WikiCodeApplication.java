@@ -56,25 +56,63 @@ public class WikiCodeApplication implements CommandLineRunner{
 		clientRepository.deleteAll();
 		addressRepository.deleteAll();
 		
-		for (int i = 0; i < 50; i++) {
-			Category c5 = new Category(
-					String.format("Categoria %s", (i + 1)), 
-					String.format("Desc %s", (i + 1))
-			);
-			categoryRepository.save(c5);
-			
+		
+		Category backend = new Category(
+				"Backend", 
+				"Em projetos de software, por exemplo, a arquitetura modelo-visão-controlador fornece o -end e o back-end para o banco de dados, o usuário e para os componentes de processamento. A separação de sistemas de software em front-end e back-end simplifica o desenvolvimento e separa a manutenção. ",
+				"fas fa-server");
+		Category frontend = new Category(
+				"Frontend",
+				"O front-end é responsável por coligir a entrada do usuário em várias formas e processá-la para adequá-la a uma especificação em que o back-end a possa utilizar",
+				"fas fa-fa-terminal");
+		Category api = new Category(
+				"API",
+				"A sigla API provém do Inglês Application Programming Interface, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.",
+				"fas fa-server");
+		Category git = new Category(
+				"Git",
+				"É um sistema de controle de versões distribuído, usado principalmente no desenvolvimento de software, mas pode ser usado para registrar o histórico de edições de qualquer tipo de arquivo.",
+				"fas fa-code-branch");
+		Category infra = new Category(
+				"Backend", 
+				"Em projetos de software, por exemplo, a arquitetura modelo-visão-controlador fornece o -end e o back-end para o banco de dados, o usuário e para os componentes de processamento. A separação de sistemas de software em front-end e back-end simplifica o desenvolvimento e separa a manutenção. ",
+				"fas fa-network-wired");
+		Category database = new Category(
+				"Database",
+				"São conjuntos de arquivos relacionados entre si com registros sobre pessoas, lugares ou coisas.",
+				"fas fa-database");
+		
+		categoryRepository.save(
+				Arrays.asList(backend, frontend, api, git, infra, database)
+		);
 
-			Subcategory s4 = new Subcategory(String.format("Subcategoria %s", (i + 1)), c5);
-			subcategoryRepository.save(s4);
-				
+		
+		Subcategory java = new Subcategory("Java", null, "fas fa-java", backend);
+		Subcategory php = new Subcategory("PHP", null, "fas fa-php", backend);
+		Subcategory python = new Subcategory("Java", null, "fas fa-python", backend);
+		Subcategory node = new Subcategory("Node", null, "fas fa-node-js", backend);
 
-			Post p1 = new Post(
-					null, 
-					String.format("Post %s", (i + 1)), 
-					String.format("Descrição %s", (i + 1)), s4);
-			postRepository.save(p1);
-							
-		}
+		Subcategory angular = new Subcategory("Node", null, "fas fa-angular", frontend);
+		Subcategory js = new Subcategory("Java", null, "fas fa-js", frontend);
+		Subcategory react = new Subcategory("Java", null, "fas fa-react", frontend);
+		Subcategory css = new Subcategory("PHP", null, "fas fa-css3", frontend);
+		
+		Subcategory spring = new Subcategory("Spring Boot", null, "fas fa-java", api);
+		Subcategory laravel = new Subcategory("Laravel", null, "fas fa-php", api);
+
+		Subcategory docker = new Subcategory("Docker", null, "fas fa-docker", infra);
+		Subcategory aws = new Subcategory("Docker", null, "fas fa-aws", infra);
+		Subcategory cloud = new Subcategory("Docker", null, "fas fa-cloud", infra);
+		
+		subcategoryRepository.save(
+				Arrays.asList(
+						java, php, python, node,
+						angular, js, react, css,
+						spring, laravel,
+						docker, aws, cloud)
+		);
+		
+		
 				
 		User u1 = new User("k.crane", "1234");
 		userRepository.save(u1);
