@@ -5,6 +5,8 @@ import br.com.wikicode.domain.Subcategory;
 public class SubcategoryDTO {
 	
 	private String name;
+	private String description;
+	private String icon;
 	private String categoryId;
 	
 	public SubcategoryDTO() {
@@ -27,6 +29,22 @@ public class SubcategoryDTO {
 	}
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public static SubcategoryDTO fromDto(Subcategory subcategory) {

@@ -15,14 +15,16 @@ public class Category extends ObjectBase implements Serializable {
 
 	private String name;
 	private String description;
+	private String icon;
 
 	@JsonIgnore
 	private List<Subcategory> subcategories = new ArrayList<>();
 	
-	public Category(String name, String description) {
+	public Category(String name, String description, String icon) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.icon = icon;
 	}
 	
 	public Category() {
@@ -52,4 +54,13 @@ public class Category extends ObjectBase implements Serializable {
 	public void setSubcategories(List<Subcategory> subcategories) {
 		this.subcategories = subcategories;
 	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 }

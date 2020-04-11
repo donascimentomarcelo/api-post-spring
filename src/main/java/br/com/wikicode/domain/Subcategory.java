@@ -12,13 +12,18 @@ public class Subcategory extends ObjectBase implements Serializable {
 
 	private String id;
 	private String name;
+	private String description;
+	private String icon;
 
 	@DBRef(lazy=true)
 	private Category category;
 	
-	public Subcategory(String name, Category category) {
-		super();
+	
+
+	public Subcategory(String name, String description, String icon, Category category) {
 		this.name = name;
+		this.description = description;
+		this.icon = icon;
 		this.category = category;
 	}
 
@@ -41,13 +46,33 @@ public class Subcategory extends ObjectBase implements Serializable {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public Category getCategory() {
 		return category;
 	}
+	
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 }
