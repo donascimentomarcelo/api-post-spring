@@ -42,7 +42,7 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	@Override
 	public Subcategory associateWithCategory(SubcategoryDTO subcategoryDTO) {
 		Category category = categoryService.find(subcategoryDTO.getCategoryId());
-		Subcategory subcategory = new Subcategory(subcategoryDTO.getName(), category);
+		Subcategory subcategory = new Subcategory(subcategoryDTO.getName(), subcategoryDTO.getDescription(), subcategoryDTO.getIcon(), category);
 		return subcategory;
 	}
 
