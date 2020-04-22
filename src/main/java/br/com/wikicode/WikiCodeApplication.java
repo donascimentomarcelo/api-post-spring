@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.wikicode.domain.Address;
 import br.com.wikicode.domain.Category;
 import br.com.wikicode.domain.Client;
-import br.com.wikicode.domain.Post;
 import br.com.wikicode.domain.Subcategory;
 import br.com.wikicode.domain.User;
 import br.com.wikicode.domain.enums.Profile;
@@ -64,17 +63,17 @@ public class WikiCodeApplication implements CommandLineRunner{
 		Category frontend = new Category(
 				"Frontend",
 				"O front-end é responsável por coligir a entrada do usuário em várias formas e processá-la para adequá-la a uma especificação em que o back-end a possa utilizar",
-				"fas fa-fa-terminal");
+				"fas fa-terminal");
 		Category api = new Category(
 				"API",
 				"A sigla API provém do Inglês Application Programming Interface, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.",
-				"fas fa-server");
+				"fas fa-laptop-code");
 		Category git = new Category(
 				"Git",
 				"É um sistema de controle de versões distribuído, usado principalmente no desenvolvimento de software, mas pode ser usado para registrar o histórico de edições de qualquer tipo de arquivo.",
 				"fas fa-code-branch");
 		Category infra = new Category(
-				"Backend", 
+				"Infra", 
 				"Em projetos de software, por exemplo, a arquitetura modelo-visão-controlador fornece o -end e o back-end para o banco de dados, o usuário e para os componentes de processamento. A separação de sistemas de software em front-end e back-end simplifica o desenvolvimento e separa a manutenção. ",
 				"fas fa-network-wired");
 		Category database = new Category(

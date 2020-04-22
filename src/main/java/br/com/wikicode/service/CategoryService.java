@@ -14,4 +14,5 @@ public interface CategoryService {
 	Category find(String id);
 	void delete(String id);
 	Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
+	List<Category> findByName(String name);
 }

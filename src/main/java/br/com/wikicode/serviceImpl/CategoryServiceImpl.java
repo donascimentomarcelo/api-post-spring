@@ -46,8 +46,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void update(Category category, String id) {
-		checkIfCategoryExists(category);
-		find(id);
 		category.setId(id);
 		categoryRepository.save(category);
 	}
@@ -79,6 +77,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return categoryRepository.findAll(pageRequest);
+	}
+
+	@Override
+	public List<Category> findByName(String name) {
+		return categoryRepository.findByNameContainingIgnoreCase(name);
 	}
 
 }

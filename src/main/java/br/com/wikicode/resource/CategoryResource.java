@@ -70,4 +70,10 @@ public class CategoryResource {
 		Page<Category> categories = categoryService.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(categories);
 	}
+	
+	@GetMapping("/findByName")
+	public ResponseEntity<List<Category>> findByName(@RequestParam(value = "name") String name) {
+		List<Category> categories = categoryService.findByName(name);
+		return ResponseEntity.ok().body(categories);
+	}
 }
