@@ -86,8 +86,8 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 	}
 
 	@Override
-	public List<Subcategory> findByNameAndCategory(String name, String categoryId) {
-		return subcategoryRepository.filter(name, categoryId);
+	public List<Subcategory> findByNameAndCategory(String name, String icon, String categoryId) {
+		return subcategoryRepository.filter(name, icon, categoryId);
 	}
 
 }

@@ -17,7 +17,7 @@ public class SubcategoryRepositoryImpl implements SubcategoryRepositoryQuery {
 	private MongoTemplate mongoTemplate;
 
 	@Override
-	public List<Subcategory> filter(String name, String categoryId) {
+	public List<Subcategory> filter(String name, String icon, String categoryId) {
 		Query query = new Query();
 		
 		@SuppressWarnings("unused")
@@ -25,6 +25,10 @@ public class SubcategoryRepositoryImpl implements SubcategoryRepositoryQuery {
 		
 		if (StringUtils.hasText(name)) {
 			query.addCriteria(Criteria.where("name").is(name));
+		}
+
+		if (StringUtils.hasText(icon)) {
+			query.addCriteria(Criteria.where("icon").is(icon));
 		}
 		
 		if (StringUtils.hasText(categoryId)) {

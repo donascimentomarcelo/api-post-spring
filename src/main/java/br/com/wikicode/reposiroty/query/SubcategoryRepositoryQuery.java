@@ -6,5 +6,5 @@ import br.com.wikicode.domain.Subcategory;
 
 public interface SubcategoryRepositoryQuery {
 
-	List<Subcategory> filter(String name, String categoryId);
+	List<Subcategory> filter(String name, String icon, String categoryId);
 }

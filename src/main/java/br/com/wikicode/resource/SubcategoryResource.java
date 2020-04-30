@@ -85,8 +85,9 @@ public class SubcategoryResource {
 	@GetMapping("/findByNameAndCategory")
 	public ResponseEntity<List<Subcategory>> findByNameAndCategory(
 			@RequestParam(value = "name") String name,
+			@RequestParam(value = "icon") String icon,
 			@RequestParam(value = "categoryId") String categoryId) {
-		List<Subcategory> list = subcategoryService.findByNameAndCategory(name, categoryId);
+		List<Subcategory> list = subcategoryService.findByNameAndCategory(name, icon, categoryId);
 		return ResponseEntity.ok().body(list);
 	}
 }
