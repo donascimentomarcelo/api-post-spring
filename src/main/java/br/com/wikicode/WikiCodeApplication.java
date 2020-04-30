@@ -86,22 +86,22 @@ public class WikiCodeApplication implements CommandLineRunner{
 		);
 
 		
-		Subcategory java = new Subcategory("Java", null, "fas fa-java", backend);
-		Subcategory php = new Subcategory("PHP", null, "fas fa-php", backend);
-		Subcategory python = new Subcategory("Java", null, "fas fa-python", backend);
-		Subcategory node = new Subcategory("Node", null, "fas fa-node-js", backend);
+		Subcategory java = new Subcategory("Java", null, "fab fa-java", backend);
+		Subcategory php = new Subcategory("PHP", null, "fab fa-php", backend);
+		Subcategory python = new Subcategory("Python", null, "fab fa-python", backend);
+		Subcategory node = new Subcategory("Node", null, "fab fa-node-js", backend);
 
-		Subcategory angular = new Subcategory("Node", null, "fas fa-angular", frontend);
-		Subcategory js = new Subcategory("Java", null, "fas fa-js", frontend);
-		Subcategory react = new Subcategory("Java", null, "fas fa-react", frontend);
-		Subcategory css = new Subcategory("PHP", null, "fas fa-css3", frontend);
+		Subcategory angular = new Subcategory("Angular", null, "fab fa-angular", frontend);
+		Subcategory js = new Subcategory("Javascript", null, "fab fa-js", frontend);
+		Subcategory react = new Subcategory("React", null, "fab fa-react", frontend);
+		Subcategory css = new Subcategory("CSS 3", null, "fab fa-css3", frontend);
 		
-		Subcategory spring = new Subcategory("Spring Boot", null, "fas fa-java", api);
-		Subcategory laravel = new Subcategory("Laravel", null, "fas fa-php", api);
+		Subcategory spring = new Subcategory("Spring Boot", null, "fab fa-java", api);
+		Subcategory laravel = new Subcategory("Laravel", null, "fab fa-php", api);
 
-		Subcategory docker = new Subcategory("Docker", null, "fas fa-docker", infra);
-		Subcategory aws = new Subcategory("Docker", null, "fas fa-aws", infra);
-		Subcategory cloud = new Subcategory("Docker", null, "fas fa-cloud", infra);
+		Subcategory docker = new Subcategory("Docker", null, "fab fa-docker", infra);
+		Subcategory aws = new Subcategory("AWS", null, "fab fa-aws", infra);
+		Subcategory cloud = new Subcategory("Cloud", null, "fas fa-cloud", infra);
 		
 		subcategoryRepository.save(
 				Arrays.asList(
