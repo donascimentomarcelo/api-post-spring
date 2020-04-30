@@ -82,12 +82,9 @@ public class SubcategoryResource {
 		return ResponseEntity.ok().body(subcategories);
 	}
 	
-	@GetMapping("/findByNameAndCategory")
-	public ResponseEntity<List<Subcategory>> findByNameAndCategory(
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "icon") String icon,
-			@RequestParam(value = "categoryId") String categoryId) {
-		List<Subcategory> list = subcategoryService.findByNameAndCategory(name, icon, categoryId);
+	@PostMapping("/findByNameAndCategory")
+	public ResponseEntity<List<Subcategory>> findByNameAndCategory(@RequestBody SubcategoryDTO subcategoryDTO) {
+		List<Subcategory> list = subcategoryService.findByNameAndCategory(subcategoryDTO.getName(), subcategoryDTO.getIcon(), subcategoryDTO.getCategoryId());
 		return ResponseEntity.ok().body(list);
 	}
 }
