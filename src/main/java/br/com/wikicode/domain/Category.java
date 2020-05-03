@@ -16,9 +16,6 @@ public class Category extends ObjectBase implements Serializable {
 	private String name;
 	private String description;
 	private String icon;
-
-	@JsonIgnore
-	private List<Subcategory> subcategories = new ArrayList<>();
 	
 	public Category(String name, String description, String icon) {
 		super();
@@ -45,14 +42,6 @@ public class Category extends ObjectBase implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<Subcategory> getSubcategories() {
-		return subcategories;
-	}
-	
-	public void setSubcategories(List<Subcategory> subcategories) {
-		this.subcategories = subcategories;
 	}
 
 	public String getIcon() {

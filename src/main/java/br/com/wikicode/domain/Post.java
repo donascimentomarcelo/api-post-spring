@@ -14,8 +14,7 @@ public class Post implements Serializable {
 	private String description;
 	private Subcategory subcategory;
 	
-	public Post(String id, String title, String description, Subcategory subcategory) {
-		this.id = id;
+	public Post(String title, String description, Subcategory subcategory) {
 		this.title = title;
 		this.description = description;
 		this.subcategory = subcategory;
