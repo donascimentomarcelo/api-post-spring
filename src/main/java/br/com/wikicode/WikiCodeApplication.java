@@ -2,43 +2,29 @@ package br.com.wikicode;
 
 import java.util.Arrays;
 
+import br.com.wikicode.domain.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.wikicode.domain.Address;
 import br.com.wikicode.domain.Category;
-import br.com.wikicode.domain.Client;
 import br.com.wikicode.domain.Subcategory;
-import br.com.wikicode.domain.User;
-import br.com.wikicode.domain.enums.Profile;
-import br.com.wikicode.domain.enums.State;
-import br.com.wikicode.reposiroty.AddressRepository;
 import br.com.wikicode.reposiroty.CategoryRepository;
-import br.com.wikicode.reposiroty.ClientRepository;
 import br.com.wikicode.reposiroty.PostRepository;
 import br.com.wikicode.reposiroty.SubcategoryRepository;
-import br.com.wikicode.reposiroty.UserRepository;
 
 @SpringBootApplication
-public class WikiCodeApplication implements CommandLineRunner{
+public class WikiCodeApplication implements CommandLineRunner {
+
+	private final String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
 	@Autowired
 	private SubcategoryRepository subcategoryRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
 
-	@Autowired
-	private AddressRepository addressRepository;
-
-	@Autowired
-	private ClientRepository clientRepository;
-	
 	@Autowired
 	private PostRepository postRepository;
 	
@@ -51,10 +37,6 @@ public class WikiCodeApplication implements CommandLineRunner{
 		categoryRepository.deleteAll();
 		subcategoryRepository.deleteAll();
 		postRepository.deleteAll();
-		userRepository.deleteAll();
-		clientRepository.deleteAll();
-		addressRepository.deleteAll();
-		
 		
 		Category backend = new Category(
 				"Backend", 
@@ -110,26 +92,17 @@ public class WikiCodeApplication implements CommandLineRunner{
 						spring, laravel,
 						docker, aws, cloud)
 		);
-		
-		
-				
-		User u1 = new User("k.crane", "1234");
-		userRepository.save(u1);
-		
-		Address a1 = new Address("2012458", "rua abc", "Rio de Janeiro", State.RJ);
-		Address a2 = new Address("1215515", "rua abc", "São Paulo", State.SP);
-		Address a3 = new Address("8784584", "rua abc", "Minas Gerais", State.MG);
-		addressRepository.save(Arrays.asList(a1, a2, a3));
-		
-		
-		Client cli1 = new Client("Kyle Crane", "crane@email");
-		cli1.getAddress().addAll(Arrays.asList(a1, a2, a3));
-		cli1.getPhones().addAll(Arrays.asList("34553890", "982525286"));
-		cli1.addProfile(Profile.ADMIN);
-		clientRepository.save(Arrays.asList(cli1));
-		
-		u1.setClient(cli1);
-		userRepository.save(u1);	
+
+		Post postJava = new Post("Java Post", text, java);
+		Post postPHP = new Post("PHP Post", text, php);
+		Post postPython = new Post("Python Post", text, python);
+		Post postNode = new Post("Node Post", text, node);
+
+		postRepository.save(
+				Arrays.asList(
+						postJava, postPHP, postPython, postNode
+				)
+		);
 	}
 
 }
