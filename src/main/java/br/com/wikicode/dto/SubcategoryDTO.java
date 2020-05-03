@@ -13,9 +13,10 @@ public class SubcategoryDTO {
 
 	}
 	
-	public SubcategoryDTO(String name, String categoryId) {
+	public SubcategoryDTO(String name, String categoryId, String icon) {
 		this.name = name;
 		this.categoryId = categoryId;
+		this.icon = icon;
 	}
 
 	public String getName() {
@@ -48,6 +49,6 @@ public class SubcategoryDTO {
 	}
 
 	public static SubcategoryDTO fromDto(Subcategory subcategory) {
-		return new SubcategoryDTO(subcategory.getName(), subcategory.getCategory().getId());
+		return new SubcategoryDTO(subcategory.getName(), subcategory.getCategory().getId(), subcategory.getIcon());
 	}
 }

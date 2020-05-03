@@ -38,7 +38,7 @@ public class PostResource {
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody PostDTO dto) {
 		Subcategory subcategory = new Subcategory(dto.getSubcategoryId());
-		Post post = new Post(null, dto.getTitle(), dto.getDescription(), subcategory);
+		Post post = new Post(dto.getTitle(), dto.getDescription(), subcategory);
 		Post object = postService.save(post);
 		
 		URI uri = ServletUriComponentsBuilder
@@ -60,7 +60,7 @@ public class PostResource {
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable String id, @RequestBody PostDTO dto) {
 		Subcategory subcategory = new Subcategory(dto.getSubcategoryId());
-		Post post = new Post(null, dto.getTitle(), dto.getDescription(), subcategory);
+		Post post = new Post(dto.getTitle(), dto.getDescription(), subcategory);
 		postService.update(id, post);
 		return ResponseEntity.noContent().build();
 	}
