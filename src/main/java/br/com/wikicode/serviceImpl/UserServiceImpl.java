@@ -3,7 +3,9 @@ package br.com.wikicode.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.wikicode.config.security.UserSpringSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,10 +53,15 @@ public class UserServiceImpl implements UserService {
 		return newUser;
 	}
 
+	@Override
+	public UserSpringSecurity authenticated() {
+		try {
+			return (UserSpringSecurity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
-
-
-	
 	public void checkIfUserExists(String username) {
 		User user = userRepository.findByUsername(username);
 		

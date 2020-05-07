@@ -1,8 +1,11 @@
 package br.com.wikicode;
 
 import java.util.Arrays;
+import java.util.Date;
 
+import br.com.wikicode.domain.Comment;
 import br.com.wikicode.domain.Post;
+import br.com.wikicode.reposiroty.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +30,9 @@ public class WikiCodeApplication implements CommandLineRunner {
 
 	@Autowired
 	private PostRepository postRepository;
+
+	@Autowired
+	private CommentRepository commentRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(WikiCodeApplication.class, args);
@@ -93,10 +99,20 @@ public class WikiCodeApplication implements CommandLineRunner {
 						docker, aws, cloud)
 		);
 
-		Post postJava = new Post("Java Post", text, java);
-		Post postPHP = new Post("PHP Post", text, php);
-		Post postPython = new Post("Python Post", text, python);
-		Post postNode = new Post("Node Post", text, node);
+		Comment comment1 = new Comment(1, "Cranezinho", "Good");
+		Comment comment2 = new Comment(1, "Cranezinho", "Very Good");
+
+		commentRepository.save(
+				Arrays.asList(comment1, comment2)
+		);
+
+		Post postJava = new Post("Java Post", text, 10, 50, 1, "Crane", java, new Date(), new Date());
+		Post postPHP = new Post("PHP Post", text, 15, 20, 1, "Crane", php, new Date(), new Date());
+		Post postPython = new Post("Python Post", text, 84, 140, 1, "Crane", python, new Date(), new Date());
+		Post postNode = new Post("Node Post", text, 2, 18, 1, "Crane", node, new Date(), new Date());
+
+		postJava.setComments(Arrays.asList(comment1, comment2));
+		postPython.setComments(Arrays.asList(comment1, comment2));
 
 		postRepository.save(
 				Arrays.asList(

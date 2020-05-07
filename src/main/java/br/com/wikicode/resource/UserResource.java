@@ -43,7 +43,7 @@ public class UserResource {
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody User user){
 		user = userService.save(user);
-		URI uri = baseService.returnUri(user.getId());
+		URI uri = baseService.returnUri(Integer.toString(user.getId()));
 		return ResponseEntity.created(uri).build();
 	}
 }

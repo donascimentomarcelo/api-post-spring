@@ -1,7 +1,13 @@
 package br.com.wikicode.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
+import br.com.wikicode.config.security.UserSpringSecurity;
+import br.com.wikicode.domain.Subcategory;
+import br.com.wikicode.dto.PostDTO;
+import br.com.wikicode.service.SubcategoryService;
+import br.com.wikicode.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,13 +24,22 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostRepository postRepository;
 
+	@Autowired
+	private SubcategoryService subcategoryService;
+
+	@Autowired
+	private UserService userService;
+
 	@Override
 	public List<Post> getAll() {
 		return postRepository.findAll();
 	}
 
 	@Override
-	public Post save(Post post) {
+	public Post save(PostDTO dto) {
+		Subcategory subcategory = subcategoryService.find(dto.getSubcategoryId());
+		UserSpringSecurity authenticated = userService.authenticated();
+		Post post = new Post(dto.getTitle(), dto.getDescription(), 0, 0, authenticated.getId(), authenticated.getUsername(), subcategory, new Date(), new Date());
 		return postRepository.save(post);
 	}
 
@@ -34,12 +49,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void update(String id, Post post) {
-		Post object = findOne(id);
-		object.setDescription(post.getDescription());
-		object.setTitle(post.getTitle());
+	public void update(String id, PostDTO dto) {
+		// Post object = findOne(id);
+		// object.setDescription(post.getDescription());
+		// object.setTitle(post.getTitle());
 		// object.setSubcategory(post.getSubcategory());
-		save(object);
+		// save(object);
 	}
 
 	@Override

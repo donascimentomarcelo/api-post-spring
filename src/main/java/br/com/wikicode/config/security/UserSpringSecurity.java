@@ -14,18 +14,18 @@ public class UserSpringSecurity implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
+	private Integer id;
 	private String username;
 	private String password;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserSpringSecurity(String id, String username, String password) {
+	public UserSpringSecurity(Integer id, String username, String password) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
 
-	public UserSpringSecurity(String id, String username, String password, Set<String> profiles) {
+	public UserSpringSecurity(Integer id, String username, String password, Set<String> profiles) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -40,7 +40,7 @@ public class UserSpringSecurity implements UserDetails {
 		return authorities;
 	}
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 

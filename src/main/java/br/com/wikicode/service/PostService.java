@@ -2,6 +2,7 @@ package br.com.wikicode.service;
 
 import java.util.List;
 
+import br.com.wikicode.dto.PostDTO;
 import org.springframework.data.domain.Page;
 
 import br.com.wikicode.domain.Post;
@@ -10,11 +11,11 @@ public interface PostService {
 
 	List<Post> getAll();
 
-	Post save(Post dto);
+	Post save(PostDTO dto);
 
 	Post findOne(String id);
 
-	void update(String id, Post post);
+	void update(String id, PostDTO dto);
 
 	void delete(String id);
 

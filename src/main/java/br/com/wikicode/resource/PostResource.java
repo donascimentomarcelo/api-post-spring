@@ -37,9 +37,7 @@ public class PostResource {
 	
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody PostDTO dto) {
-		Subcategory subcategory = new Subcategory(dto.getSubcategoryId());
-		Post post = new Post(dto.getTitle(), dto.getDescription(), subcategory);
-		Post object = postService.save(post);
+		Post object = postService.save(dto);
 		
 		URI uri = ServletUriComponentsBuilder
 					.fromCurrentRequest()
@@ -59,28 +57,27 @@ public class PostResource {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable String id, @RequestBody PostDTO dto) {
-		Subcategory subcategory = new Subcategory(dto.getSubcategoryId());
-		Post post = new Post(dto.getTitle(), dto.getDescription(), subcategory);
-		postService.update(id, post);
+
+		postService.update(id, dto);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		postService.delete(id);
-		return ResponseEntity.noContent().build();		
+		return ResponseEntity.noContent().build();
 	}
-	
+
 	@GetMapping("/paginate")
 	public ResponseEntity<Page<Post>> paginate(
-			@RequestParam(value = "page", defaultValue = "0") Integer page, 
-			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy, 
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
+			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Post> list = postService.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@GetMapping("/fingByTitle")
 	public ResponseEntity<List<Post>> findByTitle(
 			@RequestParam("categoryId") String categoryId,
