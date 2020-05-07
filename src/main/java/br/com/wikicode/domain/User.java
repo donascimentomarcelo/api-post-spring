@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 //@Document(collection="user")
-public class User extends ObjectBase {
+public class User {
 
-	// @Column(unique=true)
+	private Integer id;
 	private String username;
 	private String password;
 	private Set<String> profiles = new HashSet<>();
@@ -48,5 +48,13 @@ public class User extends ObjectBase {
 
 	public void setProfiles(Set<String> profiles) {
 		this.profiles = profiles;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
