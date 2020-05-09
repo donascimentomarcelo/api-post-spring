@@ -57,9 +57,11 @@ public class JWTAuthenticationFilter  extends UsernamePasswordAuthenticationFilt
 											Authentication auth) throws IOException, ServletException{
 
 		String username = ((UserSpringSecurity) auth.getPrincipal()).getUsername();
+		Integer id = ((UserSpringSecurity) auth.getPrincipal()).getId();
 		String token = jwtUtil.generateToken(username);
 		res.addHeader("Authorization", "Bearer " + token);
 		res.addHeader("access-control-expose-headers", "Authorization");
 		res.addHeader("username", username);
+		res.addHeader("id", Integer.toString(id));
 	}
 }
