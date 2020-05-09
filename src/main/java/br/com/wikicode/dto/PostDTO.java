@@ -1,7 +1,10 @@
 package br.com.wikicode.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import br.com.wikicode.domain.Comment;
 import br.com.wikicode.domain.Post;
 
 public class PostDTO implements Serializable {
@@ -13,6 +16,7 @@ public class PostDTO implements Serializable {
 	private String description;
 	private String subcategoryId;
 	private String categoryId;
+	private List<Comment> comments = new ArrayList<>();
 	
 	public PostDTO() { }
 	
@@ -27,6 +31,7 @@ public class PostDTO implements Serializable {
 		this.description = post.getDescription();
 		this.subcategoryId = post.getSubcategory().getId();
 		this.categoryId = post.getSubcategory().getCategory().getId();
+		this.comments = post.getComments();
 	}
 
 	public String getTitle() {
@@ -58,6 +63,12 @@ public class PostDTO implements Serializable {
 	}
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
+	}
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public static PostDTO fromDTO(Post post) {

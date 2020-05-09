@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Document
 public class Comment implements Serializable {
@@ -15,11 +16,13 @@ public class Comment implements Serializable {
     private Integer userId;
     private String userName;
     private String text;
+    private Date createdAt;
 
-    public Comment(Integer userId, String userName, String text) {
+    public Comment(Integer userId, String userName, String text, Date createdAt) {
         this.userId = userId;
         this.userName = userName;
         this.text = text;
+        this.createdAt = createdAt;
     }
 
     public String getId() {
@@ -52,5 +55,13 @@ public class Comment implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

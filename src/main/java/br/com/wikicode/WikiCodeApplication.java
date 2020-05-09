@@ -21,6 +21,7 @@ import br.com.wikicode.reposiroty.SubcategoryRepository;
 public class WikiCodeApplication implements CommandLineRunner {
 
 	private final String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+	private final String comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -99,8 +100,8 @@ public class WikiCodeApplication implements CommandLineRunner {
 						docker, aws, cloud)
 		);
 
-		Comment comment1 = new Comment(1, "Cranezinho", "Good");
-		Comment comment2 = new Comment(1, "Cranezinho", "Very Good");
+		Comment comment1 = new Comment(1, "Marta Felix", comment, new Date());
+		Comment comment2 = new Comment(1, "Joseph Bale", comment, new Date());
 
 		commentRepository.save(
 				Arrays.asList(comment1, comment2)
