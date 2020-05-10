@@ -1,5 +1,6 @@
 package br.com.wikicode.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +17,7 @@ public class Comment implements Serializable {
     private Integer userId;
     private String userName;
     private String text;
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date createdAt;
 
     public Comment(Integer userId, String userName, String text, Date createdAt) {

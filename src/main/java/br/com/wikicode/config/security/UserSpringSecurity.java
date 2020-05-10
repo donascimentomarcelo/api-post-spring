@@ -17,18 +17,24 @@ public class UserSpringSecurity implements UserDetails {
 	private Integer id;
 	private String username;
 	private String password;
+	private String name;
+	private String email;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserSpringSecurity(Integer id, String username, String password) {
+	public UserSpringSecurity(Integer id, String username, String password, String name, String email) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.name = name;
+		this.email = email;
 	}
 
-	public UserSpringSecurity(Integer id, String username, String password, Set<String> profiles) {
+	public UserSpringSecurity(Integer id, String username, String password, String name, String email, Set<String> profiles) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.name = name;
+		this.email = email;
 		this.authorities = profiles
 								.stream()
 								.map(profile -> new SimpleGrantedAuthority(profile))
@@ -52,6 +58,14 @@ public class UserSpringSecurity implements UserDetails {
 	@Override
 	public String getUsername() {
 		return username;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	@Override
