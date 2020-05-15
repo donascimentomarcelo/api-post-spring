@@ -8,6 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.wikicode.constants.JWTConst;
+import br.com.wikicode.dto.UserDTO;
+import com.google.gson.Gson;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,7 +29,6 @@ public class JWTAuthenticationFilter  extends UsernamePasswordAuthenticationFilt
 	private JWTUtil jwtUtil;
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
-		super();
  		this.authenticationManager = authenticationManager;
  		this.jwtUtil = jwtUtil;
 	}
@@ -56,12 +58,14 @@ public class JWTAuthenticationFilter  extends UsernamePasswordAuthenticationFilt
 											FilterChain chain,
 											Authentication auth) throws IOException, ServletException{
 
-		String username = ((UserSpringSecurity) auth.getPrincipal()).getUsername();
-		Integer id = ((UserSpringSecurity) auth.getPrincipal()).getId();
-		String token = jwtUtil.generateToken(username);
-		res.addHeader("Authorization", "Bearer " + token);
-		res.addHeader("access-control-expose-headers", "Authorization");
-		res.addHeader("username", username);
-		res.addHeader("id", Integer.toString(id));
+		final UserSpringSecurity user = (UserSpringSecurity) auth.getPrincipal();
+		String token = jwtUtil.generateToken(user.getUsername());
+		res.addHeader(JWTConst.AUTHORIZARION, JWTConst.BEARER + token);
+		res.addHeader(JWTConst.ACCESs_CONTROL_EXPOSE_HEADERS, JWTConst.AUTHORIZARION);
+
+		String json = new Gson().toJson(new UserDTO(user));
+		res.setContentType(JWTConst.APPLICATION_JSON);
+		res.setCharacterEncoding(JWTConst.UTF8);
+		res.getWriter().write(json);
 	}
 }
