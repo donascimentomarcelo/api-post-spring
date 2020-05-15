@@ -19,8 +19,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Autowired
 	private IntegrationService integrationService;
-	
-
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,6 +31,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			e.printStackTrace();
 		}
 
-		return new UserSpringSecurity(user.getId(), user.getUsername(), user.getPassword(), user.getProfiles());
+		return new UserSpringSecurity(user.getId(), user.getUsername(), user.getPassword(), user.getClient().getName(), user.getClient().getEmail(), user.getProfiles());
 	}
 }

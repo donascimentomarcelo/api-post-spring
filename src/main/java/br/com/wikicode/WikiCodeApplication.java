@@ -1,5 +1,6 @@
 package br.com.wikicode;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -100,8 +101,12 @@ public class WikiCodeApplication implements CommandLineRunner {
 						docker, aws, cloud)
 		);
 
-		Comment comment1 = new Comment(1, "Marta Felix", comment, new Date());
-		Comment comment2 = new Comment(1, "Joseph Bale", comment, new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+		Date date1 = sdf.parse("31-08-2019 10:20:56");
+		Date date2 = sdf.parse("20-07-2019 09:10:50");
+
+		Comment comment1 = new Comment(1, "Marta Felix", comment, date1);
+		Comment comment2 = new Comment(1, "Joseph Bale", comment, date2);
 
 		commentRepository.save(
 				Arrays.asList(comment1, comment2)
