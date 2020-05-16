@@ -45,6 +45,7 @@ public class WikiCodeApplication implements CommandLineRunner {
 		categoryRepository.deleteAll();
 		subcategoryRepository.deleteAll();
 		postRepository.deleteAll();
+		commentRepository.deleteAll();
 		
 		Category backend = new Category(
 				"Backend", 

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.wikicode.dto.PostDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,8 +27,14 @@ public class Post implements Serializable {
 	@DBRef(lazy=true)
 	private List<Comment> comments = new ArrayList<Comment>();
 	private Subcategory subcategory;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date createdAt;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date udatedAt;
+
+	public Post() {
+
+	}
 
 	public Post(String title, String description, Integer vote, Integer view, Integer authorId, String authorName, Subcategory subcategory, Date createdAt, Date udatedAt) {
 		this.title = title;
@@ -126,5 +134,9 @@ public class Post implements Serializable {
 
 	public void setUdatedAt(Date udatedAt) {
 		this.udatedAt = udatedAt;
+	}
+
+	public void addComment (Comment comment) {
+		comments.add(comment);
 	}
 }

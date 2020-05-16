@@ -15,7 +15,7 @@ public interface PostService {
 
 	Post findOne(String id);
 
-	void update(String id, PostDTO dto);
+	void update(Post post);
 
 	void delete(String id);
 

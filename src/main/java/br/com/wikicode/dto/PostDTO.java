@@ -27,6 +27,7 @@ public class PostDTO implements Serializable {
 	}
 	
 	public PostDTO(Post post) {
+		this.id = post.getId();
 		this.title = post.getTitle();
 		this.description = post.getDescription();
 		this.subcategoryId = post.getSubcategory().getId();

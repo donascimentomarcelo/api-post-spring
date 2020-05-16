@@ -49,12 +49,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void update(String id, PostDTO dto) {
-		// Post object = findOne(id);
-		// object.setDescription(post.getDescription());
-		// object.setTitle(post.getTitle());
-		// object.setSubcategory(post.getSubcategory());
-		// save(object);
+	public void update(Post post) {
+		postRepository.save(post);
 	}
 
 	@Override

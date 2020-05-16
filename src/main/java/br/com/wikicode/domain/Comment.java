@@ -20,6 +20,17 @@ public class Comment implements Serializable {
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date createdAt;
 
+    public Comment() {
+
+    }
+
+    public Comment(Integer userId, String userName, String text, Date createdAt, Post post) {
+        this.userId = userId;
+        this.userName = userName;
+        this.text = text;
+        this.createdAt = createdAt;
+    }
+
     public Comment(Integer userId, String userName, String text, Date createdAt) {
         this.userId = userId;
         this.userName = userName;
