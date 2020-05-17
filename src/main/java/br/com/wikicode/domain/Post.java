@@ -139,4 +139,8 @@ public class Post implements Serializable {
 	public void addComment (Comment comment) {
 		comments.add(comment);
 	}
+
+	public void addView() {
+		setView(getView() + 1);
+	}
 }

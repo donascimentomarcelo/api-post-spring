@@ -69,6 +69,12 @@ public class PostServiceImpl implements PostService {
 		return postRepository.findByTitle(categoryId, subcategoryId, title);
 	}
 
-	
+	@Override
+	public void addView(final String id) {
+		final Post post = findOne(id);
+		post.addView();
+		update(post);
+	}
+
 
 }

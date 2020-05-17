@@ -23,4 +23,5 @@ public interface PostService {
 
 	List<Post> findByTitle(String categoryId, String subcategoryId, String title);
 
+    void addView(String id);
 }

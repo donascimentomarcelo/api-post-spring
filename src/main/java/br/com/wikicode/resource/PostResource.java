@@ -88,4 +88,10 @@ public class PostResource {
 		List<Post> list = postService.findByTitle(categoryId, subcategoryId, title);
 		return ResponseEntity.ok(list);
 	}
+
+	@GetMapping("/addView/{id}")
+	public ResponseEntity<Void> addView(@PathVariable String id) {
+		postService.addView(id);
+		return ResponseEntity.ok().build();
+	}
 }
